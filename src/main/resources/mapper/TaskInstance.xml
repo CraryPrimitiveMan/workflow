@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.codehub.workflow.mapper.TaskInstanceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.com.codehub.workflow.entity.dto.TaskInstance">
+        <id column="TASK_INSTANCE_ID" property="taskInstanceId" />
+        <result column="TASK_ID" property="taskId" />
+        <result column="PROCESS_INSTANCE_ID" property="processInstanceId" />
+        <result column="START_TIME" property="startTime" />
+        <result column="END_TIME" property="endTime" />
+        <result column="USER_ID" property="userId" />
+        <result column="NEXT_TASK_INSTANCE_IDS" property="nextTaskInstanceIds" />
+        <result column="PRE_TASK_INSTANCE_IDS" property="preTaskInstanceIds" />
+        <result column="TASK_STATE" property="taskState" />
+        <result column="TASK_STATUS" property="taskStatus" />
+        <result column="TASK_MESSAGE" property="taskMessage" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        TASK_INSTANCE_ID, TASK_ID, PROCESS_INSTANCE_ID, START_TIME, END_TIME, USER_ID, NEXT_TASK_INSTANCE_IDS, PRE_TASK_INSTANCE_IDS, TASK_STATE, TASK_STATUS, TASK_MESSAGE
+    </sql>
+
+</mapper>

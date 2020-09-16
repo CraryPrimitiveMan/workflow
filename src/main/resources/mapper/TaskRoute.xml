@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.codehub.workflow.mapper.TaskRouteMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.com.codehub.workflow.entity.dto.TaskRoute">
+        <id column="ID" property="id" />
+        <result column="PROCESS_ID" property="processId" />
+        <result column="TASK_ID" property="taskId" />
+        <result column="NEXT_TASK_ID" property="nextTaskId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, PROCESS_ID, TASK_ID, NEXT_TASK_ID
+    </sql>
+
+</mapper>
