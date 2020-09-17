@@ -35,18 +35,18 @@ public class EngineServiceImpl implements EngineService {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
-    public void run(Long taskInstanceId, Long userId, TaskStatusEnum taskStatus, String message) {
+    public void run(Long taskInstanceId, Long userId, TaskStatusEnum taskStatus, String message) throws Exception {
         try {
             Future<List<Long>> task = threadPool.submit(getPoolTask(taskInstanceId, userId, taskStatus, message));
             handleNextTask(task);
         } catch (Exception e) {
             // TODO 处理失败
             e.printStackTrace();
-            log.error(e.toString());
+            throw e;
         }
     }
 
-    public void handleNextTask(Future<List<Long>> task) throws Exception{
+    public void handleNextTask(Future<List<Long>> task) throws Exception {
         List<Long> nextTaskInstanceIds = task.get();
         if (nextTaskInstanceIds.size() > 0) {
             nextTaskInstanceIds.stream().parallel().forEach(nextTaskInstanceId -> {

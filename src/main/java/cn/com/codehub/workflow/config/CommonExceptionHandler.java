@@ -18,20 +18,18 @@ public class CommonExceptionHandler {
     @ExceptionHandler({CommonRuntimeException.class})
     public ResponseEntity<ResponseVO> handleRRException(CommonRuntimeException e) {
         log.error("{}","error_400", e);
-        return new ResponseEntity<>(new ResponseVO(e.getCode(),e.getMessage()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseVO(e.getCode(),e.getMessage()), HttpStatus.OK);
     }
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<ResponseVO> handleException(RuntimeException e) {
         log.error("{}","error_500", e);
-        String errorMsg="";
-        return new ResponseEntity<>(new ResponseVO(1000,errorMsg), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ResponseVO(1000, e.getMessage()), HttpStatus.OK);
     }
-  /*  @ExceptionHandler({Exception.class})
-    public ResponseEntity<Response> handleException(Exception e) {
-        log.error("{}","error_400", e);
-        String errorMsg=e.getLocalizedMessage();
-        return new ResponseEntity<>(new Response(1000
-                ,errorMsg), HttpStatus.BAD_REQUEST);
-    }*/
+
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<ResponseVO> handleException(Exception e) {
+        log.error("{}","error", e);
+        return new ResponseEntity<>(new ResponseVO(1000, e.getMessage()), HttpStatus.OK);
+    }
 }

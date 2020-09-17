@@ -124,7 +124,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     @Override
-    public SubmitTaskResponseVO submitTask(SubmitTaskRequestVO submitTaskRequestVO) {
+    public SubmitTaskResponseVO submitTask(SubmitTaskRequestVO submitTaskRequestVO) throws Exception {
         // 启动任务
         engineService.run(submitTaskRequestVO.getTaskInstanceId(), submitTaskRequestVO.getUserId(), submitTaskRequestVO.getTaskStatus(), submitTaskRequestVO.getMessage());
         SubmitTaskResponseVO submitTaskResponseVO = new SubmitTaskResponseVO();

@@ -8,5 +8,5 @@ public interface WorkflowService {
 
     public ProcessInstanceVO instanceProcess(InstanceRequestVO instanceRequestVO) throws Exception;
 
-    public SubmitTaskResponseVO submitTask(SubmitTaskRequestVO submitTaskRequestVO);
+    public SubmitTaskResponseVO submitTask(SubmitTaskRequestVO submitTaskRequestVO) throws Exception;
 }

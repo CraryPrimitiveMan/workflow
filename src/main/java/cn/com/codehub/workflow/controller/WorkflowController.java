@@ -37,7 +37,7 @@ public class WorkflowController extends BaseController {
 
     @ApiOperation("提交审批")
     @PostMapping("/submitTask")
-    public ResponseVO<SubmitTaskResponseVO> submitTask(@RequestBody SubmitTaskRequestVO submitTaskRequestVO) {
+    public ResponseVO<SubmitTaskResponseVO> submitTask(@RequestBody SubmitTaskRequestVO submitTaskRequestVO) throws Exception {
         return response(workflowService.submitTask(submitTaskRequestVO));
     }
 }
